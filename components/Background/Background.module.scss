@@ -1,0 +1,49 @@
+.bgElements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floatingCard {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  animation: float 10s linear infinite alternate;
+
+  &:nth-child(1) {
+    top: 10%;
+    left: 15%;
+    animation-delay: 0s;
+  }
+  &:nth-child(2) {
+    top: 30%;
+    left: 70%;
+    animation-delay: 2s;
+  }
+  &:nth-child(3) {
+    top: 60%;
+    left: 40%;
+    animation-delay: 4s;
+  }
+  &:nth-child(4) {
+    top: 80%;
+    left: 80%;
+    animation-delay: 6s;
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50px) rotate(45deg);
+  }
+}

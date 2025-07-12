@@ -1,0 +1,20 @@
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+
+  // section {
+  //   min-height: 30rem;
+  // }
+
+  .stats {
+    align-content: center;
+  }
+}

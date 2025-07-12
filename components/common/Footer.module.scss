@@ -1,0 +1,63 @@
+@import "../../styles/variables";
+
+.footer {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 60px 0 20px;
+  margin-top: 80px;
+
+  .footerContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+  }
+
+  .footerSection {
+    h3 {
+      color: $color-primary;
+      font-size: 20px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    h4 {
+      color: $color-white;
+      font-size: 16px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .footerBottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 40px;
+
+    p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+.hero {
+  text-align: left;
+  margin: 10rem 0;
+  //min-height: 30rem;
+
+  h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: linear-gradient(
+      135deg,
+      $color-white 0%,
+      $color-primary 50%,
+      #7c3aed 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 500px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+}

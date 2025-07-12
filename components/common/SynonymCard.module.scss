@@ -1,0 +1,114 @@
+@import "../../styles/variables";
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.inputText {
+  flex: 1;
+  min-width: 0;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: $color-white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+
+  &:focus {
+    outline: none;
+    border-color: #7c3aed;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  }
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.btn {
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #7c3aed, $color-primary);
+  border: none;
+  border-radius: 12px;
+  color: $color-white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.results {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  .resultsContent {
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 12px;
+    text-align: center;
+  }
+  .successMessage {
+    color: #34d399;
+    font-weight: 500;
+  }
+
+  .errorMessage {
+    color: #f87171;
+    font-weight: 500;
+  }
+
+  .synonymTag {
+    display: inline-block;
+    background: rgba(167, 139, 250, 0.15);
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    color: #c4b5fd;
+    padding: 8px 16px;
+    margin: 6px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    animation: slideInUp 0.4s ease forwards;
+    backdrop-filter: blur(10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .inputGroup {
+    flex-direction: column;
+  }
+}
