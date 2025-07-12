@@ -56,6 +56,8 @@ export const useSearchSynonyms = () => {
           message: `Found ${synonyms.length} synonyms for "${w}"`,
         });
       }
+
+      setSearchWord("");
     } catch {
       setSearchStatus({
         synonyms: [],
