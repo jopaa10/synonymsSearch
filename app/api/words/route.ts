@@ -1,7 +1,5 @@
+import { synonymsMap } from "@/lib/synonymsMap";
 import { NextRequest, NextResponse } from "next/server";
-
-// In-memory storage (global object)
-export const synonymsMap = new Map<string, Set<string>>();
 
 /**
  * Add synonyms for a word.

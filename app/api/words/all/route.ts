@@ -1,5 +1,5 @@
+import { synonymsMap } from "@/lib/synonymsMap";
 import { NextResponse } from "next/server";
-import { synonymsMap } from "../route";
 
 export async function GET() {
   const result = [];
