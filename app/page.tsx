@@ -14,11 +14,7 @@ export default function Home() {
         <section id="words" aria-label="Add and find synonyms">
           <SynonymCard />
         </section>
-        <section
-          className={styles.stats}
-          id="stats"
-          aria-label="Dictionary statistics"
-        >
+        <section className={styles.stats} aria-label="Dictionary statistics">
           <Stats />
         </section>
       </main>

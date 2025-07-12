@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./Navbar.module.scss";
 
-const sections = ["hero", "words", "stats"];
+const sections = ["hero", "words"];
 
 export default function Navbar() {
   const [activeId, setActiveId] = useState("hero");
@@ -56,14 +56,6 @@ export default function Navbar() {
             className={activeId === "words" ? styles.active : ""}
           >
             Words
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="#stats"
-            className={activeId === "stats" ? styles.active : ""}
-          >
-            Stats
           </Link>
         </li>
       </ul>
