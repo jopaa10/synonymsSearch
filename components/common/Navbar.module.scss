@@ -11,6 +11,7 @@
   border-radius: 50px;
   padding: 8px 16px;
   z-index: 100;
+  width: max-content;
 
   ul {
     list-style: none;
@@ -29,6 +30,12 @@
         gap: 30px;
         font-size: 14px;
         font-weight: 500;
+
+        &:link,
+        &:visited,
+        &:active {
+          color: $color-white;
+        }
 
         &:is(:hover, .active) {
           color: #9b59b6;

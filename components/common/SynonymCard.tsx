@@ -53,20 +53,23 @@ const SynonymCard = () => {
 
   const handleAdd = () => {
     const w1 = word1.trim().toLowerCase();
-    const w2 = word2.trim().toLowerCase();
+    const synonymsArray = word2
+      .split(",")
+      .map((s) => s.trim().toLowerCase())
+      .filter(Boolean);
 
-    if (!w1 || !w2) {
+    if (!w1 || synonymsArray.length === 0) {
       setAddStatus({ text: "Please enter both words", type: "error" });
       return;
     }
 
-    if (w1 === w2) {
+    if (synonymsArray.includes(w1)) {
       setAddStatus({ text: "Words must be different", type: "error" });
       return;
     }
 
     setAddStatus({ text: "", type: "" }); // clear previous status
-    mutateAdd({ word: w1, synonyms: [w2] });
+    mutateAdd({ word: w1, synonyms: synonymsArray });
   };
 
   const handleKeyDown = (

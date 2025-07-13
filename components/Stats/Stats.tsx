@@ -1,9 +1,15 @@
 "use client";
+
 import styles from "./Stats.module.scss";
 import { useQuery } from "@tanstack/react-query";
 
+type WordSynonyms = {
+  word: string;
+  synonyms: string[];
+};
+
 const Stats = () => {
-  const { data } = useQuery({
+  const { data, isLoading, error } = useQuery<{ words: WordSynonyms[] }>({
     queryKey: ["dictionary"],
     queryFn: async () => {
       const res = await fetch("/api/words/all");
@@ -12,30 +18,49 @@ const Stats = () => {
     },
   });
 
-  let totalWords = 0;
-  let totalSynonyms = 0;
+  if (isLoading) return <p>Loading stats...</p>;
+  if (error) return <p>Failed to load stats.</p>;
 
-  if (data?.words?.length) {
-    totalWords = data.words.length;
+  // Map where ključ je riječ, vrijednost je set sinonima
+  const graph = new Map<string, Set<string>>();
 
-    const synonymSet = new Set<string>();
-    data.words.forEach((item: { word: string; synonyms: string[] }) => {
-      item.synonyms.forEach((syn) => synonymSet.add(syn));
+  if (data?.words) {
+    // Popuni graf dvosmjernim vezama (neusmjereni graf)
+    data.words.forEach(({ word, synonyms }) => {
+      const w = word.toLowerCase();
+      if (!graph.has(w)) graph.set(w, new Set());
+
+      synonyms.forEach((syn) => {
+        const s = syn.toLowerCase();
+        if (!graph.has(s)) graph.set(s, new Set());
+
+        // Dvostrano poveži w i s
+        graph.get(w)!.add(s);
+        graph.get(s)!.add(w);
+      });
     });
-
-    totalSynonyms = synonymSet.size;
   }
+
+  // Broj jedinstvenih riječi = broj čvorova u grafu
+  const uniqueWordsCount = graph.size;
+
+  // Broj sinonimskih relacija = broj svih bridova / 2 (jer su dvostruke veze)
+  let edgeCount = 0;
+  for (const neighbors of graph.values()) {
+    edgeCount += neighbors.size;
+  }
+  const synonymRelationshipsCount = edgeCount / 2;
 
   return (
     <dl className={styles.stats} aria-labelledby="stats-heading">
       <dt>Unique words</dt>
       <dd>
-        <strong>{totalWords}</strong> unique words
+        <strong>{uniqueWordsCount}</strong> unique words
       </dd>
 
       <dt>Synonym relationships</dt>
       <dd>
-        <strong>{totalSynonyms}</strong> synonym relationships
+        <strong>{synonymRelationshipsCount}</strong> synonym relationships
       </dd>
     </dl>
   );

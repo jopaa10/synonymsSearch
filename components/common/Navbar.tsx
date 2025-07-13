@@ -12,21 +12,23 @@ export default function Navbar() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const firstId = entry.target.id;
-            setActiveId(firstId);
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
 
-            if (firstId === "hero") {
-              history.replaceState(null, "", "/");
-            } else {
-              history.replaceState(null, "", `/#${firstId}`);
-            }
+        if (visibleSections.length > 0) {
+          const topmostId = visibleSections[0].target.id;
+          setActiveId(topmostId);
+
+          if (topmostId === "hero") {
+            history.replaceState(null, "", "/");
+          } else {
+            history.replaceState(null, "", `/#${topmostId}`);
           }
-        });
+        }
       },
       {
-        rootMargin: "0px 0px -50% 0px",
+        rootMargin: "-40% 0px -40% 0px",
         threshold: 0.1,
       }
     );
