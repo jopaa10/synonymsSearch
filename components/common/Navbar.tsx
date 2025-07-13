@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./Navbar.module.scss";
 
@@ -10,55 +9,72 @@ export default function Navbar() {
   const [activeId, setActiveId] = useState("hero");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSections = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    const handleScroll = () => {
+      const scrollY = window.scrollY + window.innerHeight / 2;
 
-        if (visibleSections.length > 0) {
-          const topmostId = visibleSections[0].target.id;
-          setActiveId(topmostId);
+      for (const id of sections) {
+        const section = document.getElementById(id);
+        if (section) {
+          const offsetTop = section.offsetTop;
+          const offsetHeight = section.offsetHeight;
 
-          if (topmostId === "hero") {
-            history.replaceState(null, "", "/");
-          } else {
-            history.replaceState(null, "", `/#${topmostId}`);
+          if (scrollY >= offsetTop && scrollY < offsetTop + offsetHeight) {
+            setActiveId(id);
+            if (id === "hero") {
+              history.replaceState(null, "", "/");
+            } else {
+              history.replaceState(null, "", `/#${id}`);
+            }
           }
         }
-      },
-      {
-        rootMargin: "-40% 0px -40% 0px",
-        threshold: 0.1,
       }
-    );
+    };
 
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // run on initial load
 
-    return () => observer.disconnect();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleClick = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      if (id === "home") {
+        history.replaceState(null, "", "/");
+      } else {
+        history.replaceState(null, "", `/#${id}`);
+      }
+      setActiveId(id);
+    }
+  };
 
   return (
     <nav className={styles.navbar}>
       <ul>
-        <li>
-          <Link
-            href="#hero"
-            className={activeId === "hero" ? styles.active : ""}
-          >
-            Synonyms Tool
-          </Link>
+        <li
+          className={
+            activeId === "hero"
+              ? `${styles.list} ${styles.active}`
+              : styles.list
+          }
+          onClick={() => handleClick("hero")}
+        >
+          <a href="#hero">
+            <span className={styles.title}>Synonym Tools</span>
+          </a>
         </li>
-        <li>
-          <Link
-            href="#words"
-            className={activeId === "words" ? styles.active : ""}
-          >
-            Words
-          </Link>
+        <li
+          className={
+            activeId === "words"
+              ? `${styles.list} ${styles.active}`
+              : styles.list
+          }
+          onClick={() => handleClick("words")}
+        >
+          <a href="#words">
+            <span className={styles.title}>Words</span>
+          </a>
         </li>
       </ul>
     </nav>

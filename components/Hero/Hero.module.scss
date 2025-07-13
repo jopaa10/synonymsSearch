@@ -1,31 +1,393 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .hero {
-  text-align: left;
-  margin: 10rem 0;
-  //min-height: 30rem;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 60px;
+  margin-top: 60px;
+  flex-wrap: wrap;
 
-  h1 {
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    background: linear-gradient(
-      135deg,
-      $color-white 0%,
-      $color-primary 50%,
-      #7c3aed 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  @media (max-width: 768px) {
+    justify-content: center;
   }
 
-  p {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.7);
-    max-width: 500px;
-    margin-bottom: 30px;
-    line-height: 1.6;
+  .heroContent {
+    flex: 1;
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(
+        135deg,
+        $color-white 0%,
+        $color-primary 50%,
+        #7c3aed 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 500px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+  }
+
+  .heroAvatar {
+    flex: 0 0 300px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .geometricAvatar {
+      width: 280px;
+      height: 280px;
+      position: relative;
+      animation: avatarFloat 6s ease-in-out infinite;
+
+      .avatarLayer {
+        @include center-abs;
+      }
+
+      .avatarLayer1 {
+        width: 80px;
+        height: 80px;
+        background: $primary-gradient;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 600;
+        color: white;
+        animation: pulse 3s ease-in-out infinite;
+        z-index: 4;
+
+        &::after {
+          content: "WORD";
+        }
+      }
+
+      .avatarLayer2 {
+        width: 200px;
+        height: 200px;
+        border: 2px solid rgba(167, 139, 250, 0.3);
+        border-radius: 50%;
+        animation: rotate 20s linear infinite;
+        z-index: 1;
+      }
+
+      /* Synonym nodes */
+      .synonymNode {
+        @include node-style;
+
+        &1 {
+          top: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          animation-delay: 0s;
+
+          &::after {
+            content: "SYN1";
+          }
+        }
+
+        &2 {
+          top: 50%;
+          right: 10px;
+          transform: translateY(-50%);
+          animation-delay: 1s;
+
+          &::after {
+            content: "SYN2";
+          }
+        }
+
+        &3 {
+          bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          animation-delay: 2s;
+
+          &::after {
+            content: "SYN3";
+          }
+        }
+
+        &4 {
+          top: 50%;
+          left: 10px;
+          transform: translateY(-50%);
+          animation-delay: 3s;
+
+          &::after {
+            content: "SYN4";
+          }
+        }
+      }
+
+      /* Connection lines */
+      .connectionLine {
+        position: absolute;
+        background: $line-gradient;
+        height: 2px;
+        border-radius: 1px;
+        animation: connectionPulse 2s ease-in-out infinite;
+        z-index: 2;
+
+        &.connection1 {
+          width: 80px;
+          top: 65px;
+          left: 50%;
+          transform: translateX(-50%) rotate(-45deg);
+          animation-delay: 0s;
+        }
+
+        &.connection2 {
+          width: 80px;
+          top: 50%;
+          right: 65px;
+          transform: translateY(-50%) rotate(45deg);
+          animation-delay: 0.5s;
+        }
+
+        &.connection3 {
+          width: 80px;
+          bottom: 65px;
+          left: 50%;
+          transform: translateX(-50%) rotate(45deg);
+          animation-delay: 1s;
+        }
+
+        &.connection4 {
+          width: 80px;
+          top: 50%;
+          left: 65px;
+          transform: translateY(-50%) rotate(-45deg);
+          animation-delay: 1.5s;
+        }
+      }
+
+      /* Arrows */
+      .arrow {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-bottom: 6px solid $arrow-color;
+        animation: arrowGlow 1.5s ease-in-out infinite;
+
+        &1 {
+          top: 30px;
+          left: 50%;
+          transform: translateX(-50%);
+          animation-delay: 0s;
+        }
+
+        &2 {
+          top: 50%;
+          right: 30px;
+          transform: translateY(-50%) rotate(90deg);
+          animation-delay: 0.3s;
+        }
+
+        &3 {
+          bottom: 30px;
+          left: 50%;
+          transform: translateX(-50%) rotate(180deg);
+          animation-delay: 0.6s;
+        }
+
+        &4 {
+          top: 50%;
+          left: 30px;
+          transform: translateY(-50%) rotate(-90deg);
+          animation-delay: 0.9s;
+        }
+      }
+
+      .avatarParticles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+
+        .particle {
+          position: absolute;
+          width: 3px;
+          height: 8px;
+          background: $particle-color;
+          border-radius: 2px;
+          animation: letterFloat 6s ease-in-out infinite;
+
+          &:nth-child(1) {
+            top: 15%;
+            left: 15%;
+            animation-delay: 0s;
+
+            &::after {
+              content: "A";
+              font-size: 6px;
+              color: white;
+            }
+          }
+
+          &:nth-child(2) {
+            top: 20%;
+            right: 20%;
+            animation-delay: 1s;
+
+            &::after {
+              content: "B";
+              font-size: 6px;
+              color: white;
+            }
+          }
+
+          &:nth-child(3) {
+            bottom: 25%;
+            left: 25%;
+            animation-delay: 2s;
+
+            &::after {
+              content: "C";
+              font-size: 6px;
+              color: white;
+            }
+          }
+
+          &:nth-child(4) {
+            bottom: 30%;
+            right: 15%;
+            animation-delay: 3s;
+
+            &::after {
+              content: "D";
+              font-size: 6px;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* ANIMATIONS */
+  @keyframes nodeFloat {
+    0%,
+    100% {
+      transform: translateY(0px) scale(1);
+    }
+    50% {
+      transform: translateY(-8px) scale(1.05);
+    }
+  }
+
+  @keyframes connectionPulse {
+    0%,
+    100% {
+      opacity: 0.4;
+      transform: scaleX(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scaleX(1.1);
+    }
+  }
+
+  @keyframes arrowGlow {
+    0%,
+    100% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  @keyframes letterFloat {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+      opacity: 0.6;
+    }
+    25% {
+      transform: translateY(-15px) rotate(5deg);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-8px) rotate(-3deg);
+      opacity: 0.8;
+    }
+    75% {
+      transform: translateY(-12px) rotate(2deg);
+      opacity: 0.4;
+    }
+  }
+
+  @keyframes avatarFloat {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(2deg);
+    }
+  }
+
+  @keyframes rotate {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.9;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes particleFloat {
+    0%,
+    100% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+      opacity: 0.6;
+    }
+    25% {
+      transform: translateY(-20px) translateX(10px) rotate(90deg);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-10px) translateX(-5px) rotate(180deg);
+      opacity: 0.8;
+    }
+    75% {
+      transform: translateY(-15px) translateX(15px) rotate(270deg);
+      opacity: 0.4;
+    }
   }
 }

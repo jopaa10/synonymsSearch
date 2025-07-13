@@ -1,0 +1,22 @@
+@mixin center-abs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin node-style {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: $secondary-gradient;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: 600;
+  color: $text-color;
+  animation: nodeFloat 4s ease-in-out infinite;
+  z-index: 3;
+}

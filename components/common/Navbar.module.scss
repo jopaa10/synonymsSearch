@@ -20,26 +20,27 @@
     padding: 0;
     margin: 0;
 
-    li {
+    a {
+      color: $color-white;
+      font-weight: 600;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .list {
       a {
         color: $color-white;
-        font-weight: 600;
-        transition: color 0.3s;
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        font-size: 14px;
-        font-weight: 500;
+        text-decoration: none;
+      }
+    }
 
-        &:link,
-        &:visited,
-        &:active {
-          color: $color-white;
-        }
-
-        &:is(:hover, .active) {
-          color: #9b59b6;
-        }
+    .active {
+      a {
+        color: #9b59b6;
       }
     }
   }

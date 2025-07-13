@@ -1,2 +1,15 @@
 $color-white: #ffffff;
 $color-primary: #a78bfa;
+
+/*HERO AVATAR VARIABLES*/
+
+$primary-gradient: linear-gradient(45deg, #7c3aed, #a78bfa);
+$secondary-gradient: linear-gradient(135deg, #c4b5fd, #ddd6fe);
+$line-gradient: linear-gradient(
+  45deg,
+  rgba(167, 139, 250, 0.4),
+  rgba(124, 58, 237, 0.6)
+);
+$arrow-color: rgba(251, 191, 36, 0.8);
+$particle-color: rgba(167, 139, 250, 0.6);
+$text-color: #1a1a2e;

@@ -1,6 +1,7 @@
 import { synonymsMap } from "@/lib/synonymsMap";
 import { NextResponse } from "next/server";
 
+//GET all words for dictionary
 export async function GET() {
   const result = [];
 
