@@ -1,9 +1,7 @@
-@import "../../styles/variables";
-
 .glassCard {
-  background: rgba(255, 255, 255, 0.05);
+  background: $white-glass-05;
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid $color-white-transparent;
   border-radius: 24px;
   padding: 32px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -21,14 +19,14 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.2),
+      $white-glass-20,
       transparent
     );
   }
 
   &:hover {
     transform: translateY(-8px);
-    background: rgba(255, 255, 255, 0.08);
+    background: $white-glass-08;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
   }
 }
@@ -36,7 +34,7 @@
 .cardIcon {
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #7c3aed, $color-primary);
+  background: linear-gradient(135deg, $purple-accent, $color-primary);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -52,7 +50,7 @@
 }
 
 .cardDescription {
-  color: rgba(255, 255, 255, 0.6);
+  color: $white-glass-60;
   margin-bottom: 24px;
   line-height: 1.5;
 }

@@ -1,14 +1,12 @@
-@import "../../styles/variables";
-
 .stats {
   grid-column: 1 / -1;
   text-align: center;
-  background: rgba(255, 255, 255, 0.03);
+  background: $white-glass-03;
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid $white-glass-08;
   border-radius: 20px;
   padding: 24px;
-  color: rgba(255, 255, 255, 0.6);
+  color: $white-glass-60;
   font-size: 16px;
   display: flex;
   justify-content: center;
@@ -16,15 +14,15 @@
   flex-wrap: wrap;
   gap: 8px;
 
+  /* hide dt for visual, screen readers still read it */
   dt {
     display: none;
-    /* hide dt for visual, screen readers still read it */
   }
 
   dd {
     margin: 0;
     font-weight: normal;
-    color: rgba(255, 255, 255, 0.6);
+    color: $white-glass-60;
   }
 
   strong {
@@ -40,5 +38,5 @@
 
 .separator {
   margin: 0 8px;
-  color: rgba(255, 255, 255, 0.6);
+  color: $white-glass-60;
 }

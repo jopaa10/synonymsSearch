@@ -21,7 +21,8 @@ export const animateFlyToDictionary = (
   flyElement.style.fontSize = "14px";
   flyElement.style.fontWeight = "bold";
   flyElement.style.color = "#fff";
-  flyElement.style.background = "linear-gradient(135deg, #7c3aed, #a78bfa)";
+  flyElement.style.background =
+    "linear-gradient(135deg, $purple-accent, #a78bfa)";
   flyElement.style.borderRadius = "12px";
   flyElement.style.pointerEvents = "none";
   flyElement.style.whiteSpace = "nowrap";

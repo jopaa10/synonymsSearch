@@ -1,9 +1,7 @@
-@import "../../styles/variables";
-
 .footer {
-  background: rgba(255, 255, 255, 0.03);
+  background: $white-glass-03;
   backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid $color-white-transparent;
   padding: 60px 0 20px;
   margin-top: 80px;
 
@@ -32,7 +30,7 @@
     }
 
     p {
-      color: rgba(255, 255, 255, 0.7);
+      color: $white-glass-70;
       line-height: 1.6;
     }
 
@@ -40,7 +38,7 @@
       list-style: none;
 
       li {
-        color: rgba(255, 255, 255, 0.6);
+        color: $white-glass-60;
         margin-bottom: 8px;
         font-size: 14px;
       }
@@ -52,7 +50,7 @@
     margin: 0 auto;
     padding: 20px;
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid $white-glass-05;
     margin-top: 40px;
 
     p {

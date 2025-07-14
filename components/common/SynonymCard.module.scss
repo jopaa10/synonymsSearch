@@ -1,5 +1,3 @@
-@import "../../styles/variables";
-
 .mainContent {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -19,8 +17,8 @@
   flex: 1;
   min-width: 0;
   padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: $white-glass-08;
+  border: 1px solid $color-white-transparent;
   border-radius: 12px;
   color: $color-white;
   font-size: 16px;
@@ -29,19 +27,19 @@
 
   &:focus {
     outline: none;
-    border-color: #7c3aed;
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    border-color: $purple-accent;
+    background: $white-glass-12;
+    box-shadow: 0 0 0 3px $purple-accent-shadow;
   }
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: $white-glass-40;
   }
 }
 
 .btn {
   padding: 16px 24px;
-  background: linear-gradient(135deg, #7c3aed, $color-primary);
+  background: linear-gradient(135deg, $purple-accent, $color-primary);
   border: none;
   border-radius: 12px;
   color: $color-white;
@@ -53,7 +51,7 @@
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+    box-shadow: 0 10px 25px $purple-accent-shadow-hover;
   }
 
   &:active {
@@ -62,8 +60,8 @@
 }
 
 .results {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: $white-glass-03;
+  border: 1px solid $white-glass-08;
   border-radius: 16px;
   padding: 24px;
   min-height: 120px;
@@ -73,25 +71,25 @@
   transition: all 0.3s ease;
 
   .resultsContent {
-    color: rgba(255, 255, 255, 0.6);
+    color: $white-glass-60;
     margin-top: 12px;
     text-align: center;
   }
   .successMessage {
-    color: #34d399;
+    color: $color-success;
     font-weight: 500;
   }
 
   .errorMessage {
-    color: #f87171;
+    color: $color-error;
     font-weight: 500;
   }
 
   .synonymTag {
     display: inline-block;
-    background: rgba(167, 139, 250, 0.15);
-    border: 1px solid rgba(167, 139, 250, 0.3);
-    color: #c4b5fd;
+    background: $purple-accent-bg;
+    border: 1px solid $purple-accent-border;
+    color: $purple-accent-text;
     padding: 8px 16px;
     margin: 6px;
     border-radius: 20px;

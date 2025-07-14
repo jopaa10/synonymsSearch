@@ -1,9 +1,35 @@
-$color-white: #ffffff;
+// Primary colors
 $color-primary: #a78bfa;
 
-/*HERO AVATAR VARIABLES*/
+// Base colors
+$color-white: #ffffff;
+$color-white-transparent: rgba(255, 255, 255, 0.1);
 
-$primary-gradient: linear-gradient(45deg, #7c3aed, #a78bfa);
+// Success / error
+$color-success: #34d399;
+$color-error: #f87171;
+
+// Glass colors
+$white-glass-03: rgba(255, 255, 255, 0.03);
+$white-glass-08: rgba(255, 255, 255, 0.08);
+$white-glass-05: rgba(255, 255, 255, 0.05);
+$white-glass-12: rgba(255, 255, 255, 0.12);
+$white-glass-20: rgba(255, 255, 255, 0.2);
+$white-glass-40: rgba(255, 255, 255, 0.4);
+$white-glass-60: rgba(255, 255, 255, 0.6);
+$white-glass-70: rgba(255, 255, 255, 0.7);
+
+// Accent colors
+$purple-accent: #7c3aed;
+$purple-accent-shadow: rgba(124, 58, 237, 0.1);
+$purple-accent-shadow-hover: rgba(124, 58, 237, 0.3);
+
+$purple-accent-bg: rgba(167, 139, 250, 0.15);
+$purple-accent-border: rgba(167, 139, 250, 0.3);
+$purple-accent-text: #c4b5fd;
+
+// Hero avatar
+$primary-gradient: linear-gradient(45deg, $purple-accent, $color-primary);
 $secondary-gradient: linear-gradient(135deg, #c4b5fd, #ddd6fe);
 $line-gradient: linear-gradient(
   45deg,

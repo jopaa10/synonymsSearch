@@ -8,10 +8,10 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.container}>
-        <section id="hero" aria-label="Introduction">
+        <section id="home" aria-label="Introduction">
           <Hero />
         </section>
-        <section id="words" aria-label="Add and find synonyms">
+        <section id="synonym-tools" aria-label="Add and find synonyms">
           <SynonymCard />
         </section>
         <section className={styles.stats} aria-label="Dictionary statistics">
