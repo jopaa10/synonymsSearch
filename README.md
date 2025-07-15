@@ -19,41 +19,44 @@ A web application for searching synonyms, built with **Next.js**, **TypeScript**
 
 ## 📁 Project Structure
 
+### Backend (API routes)
+
+```plaintext
 /app
-/api/words
-layout.tsx
-page.tsx
+  /api/words
+    route.ts
+  /api/words/all
+    route.ts
+```
+
+### Frontend
+
+```plaintext
+/app
+  layout.tsx
+  page.tsx
 
 /components
-/Background
-/common
-/Dictionary
-/Hero
-/Stats
+  /Background
+  /common
+  /Dictionary
+  /Hero
+  /Stats
 
 /hooks
 /lib
 /public
 /styles
-\_animations.scss
-\_base.scss
-\_mixins.scss
-\_variables.scss
+  _animations.scss
+  _base.scss
+  _mixins.scss
+  _variables.scss
 
 /types
 /utils
+```
 
 ---
-
-## 🛠️ Development
-
-### Install dependencies
-
-```bash
-npm install
-# or
-yarn install
-```
 
 ### Run the development server
 
@@ -90,7 +93,3 @@ This project includes ARIA attributes to improve usability for screen readers an
 ## 📄 License
 
 MIT
-
----
-
-Copy that into your `README.md` and you’re ready to commit and push! Let me know if you’d like to add deployment instructions, environment variables, screenshots, or usage examples.
