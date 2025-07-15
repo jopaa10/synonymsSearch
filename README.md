@@ -58,6 +58,23 @@ A web application for searching synonyms, built with **Next.js**, **TypeScript**
 
 ---
 
+## 🛠️ Development
+
+### Clone the repository
+
+```bash
+git clone https://github.com/jopaa10/synonymsSearch.git
+cd synonymsSearch
+```
+
+### Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
 ### Run the development server
 
 ```bash
