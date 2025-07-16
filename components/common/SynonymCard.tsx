@@ -10,11 +10,22 @@ import { animateFlyToDictionary } from "@/utils/animateFlyToDictionary";
 import { useAddSynonym } from "@/hooks/useAddSynonyms";
 import { useSearchSynonyms } from "@/hooks/useSearchSynonyms";
 
+/**
+ * SynonymCard is the main interactive UI component for:
+ * - Adding new synonym relationships (bidirectional)
+ * - Searching for synonyms of a given word
+ * - Displaying a dictionary of existing synonyms
+ *
+ * REASONING:
+ * - We use custom hooks (`useAddSynonym`, `useSearchSynonyms`) to manage data logic cleanly via React Query.
+ * - We animate successful additions using `animateFlyToDictionary` for a visual connection between action and result.
+ * - The layout is structured using reusable `GlassCard` and `GlassButton` components for a consistent UI.
+ */
+
 const SynonymCard = () => {
   const addButtonRef = useRef<HTMLButtonElement>(null);
   const dictionaryCardRef = useRef<HTMLDivElement>(null);
 
-  // Add synonyms state and mutation
   const [word1, setWord1] = useState("");
   const [word2, setWord2] = useState("");
   const [addStatus, setAddStatus] = useState<{
@@ -42,7 +53,6 @@ const SynonymCard = () => {
 
   const { mutate: mutateAdd } = useAddSynonym(onAddSuccess);
 
-  // Search synonyms state and logic
   const {
     searchWord,
     setSearchWord,
@@ -68,7 +78,7 @@ const SynonymCard = () => {
       return;
     }
 
-    setAddStatus({ text: "", type: "" }); // clear previous status
+    setAddStatus({ text: "", type: "" });
     mutateAdd({ word: w1, synonyms: synonymsArray });
   };
 

@@ -4,6 +4,20 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
 
+/**
+ * We use Intersection Observer to detect which section
+ * is currently visible in the viewport as the user scrolls.
+ *
+ * WHY:
+ * - avoids expensive scroll calculations on every scroll event
+ * - is more performant than listening to window scroll events
+ * - makes it easy to update the active link in the navbar
+ * - allows updating the URL without page reloads for better UX
+ *
+ * The rootMargin setting ensures that a section becomes "active"
+ * when it’s roughly centered in the viewport.
+ */
+
 const sections = ["home", "synonym-tools"];
 
 export default function Navbar() {

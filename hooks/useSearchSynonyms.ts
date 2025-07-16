@@ -2,6 +2,20 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { SearchStatus, SynonymsResponse } from "@/types/synonyms";
 
+/**
+ * Custom hook to handle searching for synonyms for a given word.
+ *
+ * Why React Query:
+ * - Manages caching and deduplication of requests.
+ * - Provides refetch capabilities for on-demand searches.
+ * - Simplifies tracking of loading and error states.
+ *
+ * Why use controlled state:
+ * - We keep `searchWord` in local state so the input field remains controlled.
+ * - We store `searchStatus` separately so we can show helpful UI messages
+ *   (e.g. success, error, or empty state feedback) based on search results.
+ */
+
 export const useSearchSynonyms = () => {
   const [searchWord, setSearchWord] = useState("");
   const [searchStatus, setSearchStatus] = useState<SearchStatus>({

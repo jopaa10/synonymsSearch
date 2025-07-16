@@ -1,6 +1,15 @@
 import { AddSynonymArgs } from "@/types/synonyms";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
+/**
+ * Custom hook for adding a new word and its synonyms via a POST request.
+ *
+ * Why React Query:
+ * - Automatically manages loading, error, and success states.
+ * - Makes it easy to refetch or invalidate cached data (here, we invalidate the dictionary query after adding a synonym).
+ * - Helps keep UI and server data in sync without manual state management.
+ */
+
 export const useAddSynonym = (onSuccessCallback?: () => void) => {
   const queryClient = useQueryClient();
 

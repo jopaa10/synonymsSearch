@@ -1,14 +1,14 @@
 "use client";
 
+import { WordSynonyms } from "@/types/synonyms";
 import styles from "./Stats.module.scss";
 import { useQuery } from "@tanstack/react-query";
 
-type WordSynonyms = {
-  word: string;
-  synonyms: string[];
-};
-
 const Stats = () => {
+  // Fetch the entire dictionary using React Query.
+  // WHY:
+  // - handles caching and re-fetching automatically
+  // - allows easy handling of loading and error states
   const { data, isLoading, error } = useQuery<{ words: WordSynonyms[] }>({
     queryKey: ["dictionary"],
     queryFn: async () => {
@@ -21,11 +21,22 @@ const Stats = () => {
   if (isLoading) return <p>Loading stats...</p>;
   if (error) return <p>Failed to load stats.</p>;
 
-  // Map where ključ je riječ, vrijednost je set sinonima
+  /**
+   * Build an undirected graph from all words and synonyms in the dictionary.
+   *
+   * WHY:
+   * - Helps identify unique words (graph nodes) without duplicates.
+   * - Tracks all synonym relationships as edges between words.
+   * - Counts the number of unique words and total synonym relationships.
+   *
+   * Note:
+   * - Each relationship is stored bidirectionally (e.g. A → B and B → A).
+   * - So we divide the total number of edges by 2 to avoid double-counting.
+   */
+
   const graph = new Map<string, Set<string>>();
 
   if (data?.words) {
-    // Popuni graf dvosmjernim vezama (neusmjereni graf)
     data.words.forEach(({ word, synonyms }) => {
       const w = word.toLowerCase();
       if (!graph.has(w)) graph.set(w, new Set());
@@ -34,17 +45,14 @@ const Stats = () => {
         const s = syn.toLowerCase();
         if (!graph.has(s)) graph.set(s, new Set());
 
-        // Dvostrano poveži w i s
         graph.get(w)!.add(s);
         graph.get(s)!.add(w);
       });
     });
   }
 
-  // Broj jedinstvenih riječi = broj čvorova u grafu
   const uniqueWordsCount = graph.size;
 
-  // Broj sinonimskih relacija = broj svih bridova / 2 (jer su dvostruke veze)
   let edgeCount = 0;
   for (const neighbors of graph.values()) {
     edgeCount += neighbors.size;

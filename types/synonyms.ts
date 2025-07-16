@@ -43,3 +43,8 @@ export type SearchStatus = {
   type: "success" | "error" | "";
   message: string;
 };
+
+export type WordSynonyms = {
+  word: string;
+  synonyms: string[];
+};
