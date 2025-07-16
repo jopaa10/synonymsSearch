@@ -85,6 +85,10 @@ yarn dev
 
 ---
 
+## 🌎 Deployment
+
+👉 [Live Demo](https://synonyms-search-em47.vercel.app/)
+
 ## 🎨Styling
 
 All variables (colors, etc.) are stored in:
