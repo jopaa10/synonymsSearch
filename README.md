@@ -87,9 +87,7 @@ yarn dev
 
 ## 🌎 Deployment
 
-Vercel link: https://synonyms-search-em47.vercel.app/
-
-👉 [Live Demo](https://synonyms-search-em47.vercel.app/)
+Vercel 👉 [Live Demo](https://synonyms-search-em47.vercel.app/)
 
 ---
 
