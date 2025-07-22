@@ -48,3 +48,8 @@ export type WordSynonyms = {
   word: string;
   synonyms: string[];
 };
+
+export type AddSynonymCardProps = {
+  styles: { [key: string]: string };
+  dictionaryCardRef: React.RefObject<HTMLDivElement | null>;
+};

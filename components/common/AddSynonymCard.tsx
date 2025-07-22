@@ -4,8 +4,9 @@ import { useRef, useState } from "react";
 import GlassCard from "./GlassCard";
 import SynonymInput from "./SynonymInput";
 import GlassButton from "./GlassButton";
+import { AddSynonymCardProps } from "@/types/synonyms";
 
-const AddSynonymCard = ({ styles, dictionaryCardRef }) => {
+const AddSynonymCard = ({ styles, dictionaryCardRef }: AddSynonymCardProps) => {
   const addButtonRef = useRef<HTMLButtonElement>(null);
 
   const [word1, setWord1] = useState("");

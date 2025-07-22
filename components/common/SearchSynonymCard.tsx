@@ -3,7 +3,11 @@ import GlassButton from "./GlassButton";
 import GlassCard from "./GlassCard";
 import SynonymInput from "./SynonymInput";
 
-const SearchSynonymCard = ({ styles }) => {
+const SearchSynonymCard = ({
+  styles,
+}: {
+  styles: { [key: string]: string };
+}) => {
   const {
     searchWord,
     setSearchWord,
